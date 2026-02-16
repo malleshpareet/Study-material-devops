@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, Rocket, Layout, Wrench, FileCode, BookOpen } from 'lucide-react';
+import { Menu, X, Rocket, Layout, Wrench, FileCode, BookOpen, Download } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { roadmapData } from '../data/roadmapData';
 import { cn } from '../utils/cn';
@@ -93,20 +93,31 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* Auth Grid */}
-                        <div className="flex items-center gap-2">
-                            <Link
-                                to="/login"
-                                className="px-5 py-2 text-[11px] font-semibold uppercase tracking-widest text-slate-400 hover:text-white transition-all"
+                        {/* Desktop Auth Grid & Download */}
+                        <div className="hidden lg:flex items-center gap-6">
+                            <a
+                                href="/FarmerOne.apk"
+                                download="FarmerOne.apk"
+                                className="flex items-center gap-2 px-4 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-400 border border-indigo-500/20 rounded-xl transition-all duration-300 group"
                             >
-                                Login
-                            </Link>
-                            <Link
-                                to="/signup"
-                                className="px-6 py-2.5 bg-white text-black text-[11px] font-semibold uppercase tracking-widest rounded-xl hover:bg-slate-100 transition-all shadow-xl active:scale-95"
-                            >
-                                Sign Up
-                            </Link>
+                                <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+                                <span className="text-[11px] font-bold uppercase tracking-widest">FarmerOne APK</span>
+                            </a>
+
+                            <div className="flex items-center gap-2 px-6 border-l border-white/10">
+                                <Link
+                                    to="/login"
+                                    className="px-4 py-2 text-[11px] font-semibold uppercase tracking-widest text-slate-400 hover:text-white transition-all"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    to="/signup"
+                                    className="px-6 py-2.5 bg-white text-black text-[11px] font-semibold uppercase tracking-widest rounded-xl hover:bg-slate-100 transition-all shadow-xl active:scale-95"
+                                >
+                                    Sign Up
+                                </Link>
+                            </div>
                         </div>
                     </div>
 
@@ -148,21 +159,31 @@ const Navbar = () => {
                         ))}
                     </div>
 
-                    <div className="pt-6 border-t border-white/5 grid grid-cols-2 gap-4">
-                        <Link
-                            to="/login"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center justify-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400"
+                    <div className="pt-6 border-t border-white/5 space-y-4">
+                        <a
+                            href="/FarmerOne.apk"
+                            download="FarmerOne.apk"
+                            className="flex items-center justify-center gap-3 py-4 w-full bg-indigo-500/10 border border-indigo-500/20 rounded-2xl text-[10px] font-black uppercase tracking-widest text-indigo-400"
                         >
-                            Login
-                        </Link>
-                        <Link
-                            to="/signup"
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center justify-center py-4 bg-white text-black rounded-2xl text-[10px] font-black uppercase tracking-widest"
-                        >
-                            Sign Up
-                        </Link>
+                            <Download size={18} />
+                            FarmerOne APK
+                        </a>
+                        <div className="grid grid-cols-2 gap-4">
+                            <Link
+                                to="/login"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center justify-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-slate-400"
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                to="/signup"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center justify-center py-4 bg-white text-black rounded-2xl text-[10px] font-black uppercase tracking-widest"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
                     </div>
                 </motion.div>
             )}
