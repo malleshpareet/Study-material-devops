@@ -1,0 +1,31 @@
+{
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "name": "DevOps Roadmap — Zero to Pro Engineering Masterclass",
+    "description": "Master the art of modern infrastructure with the comprehensive DevOps Roadmap. From Linux fundamentals to multi-cloud orchestration and production CI/CD pipelines.",
+    "provider": {
+        "@type": "Person",
+        "name": "Mallesh Pareet",
+        "url": "https://malleshpareet.github.io/Study-material-devops/"
+    },
+    "programPrerequisites": "Basic understanding of computing",
+    "educationalLevel": "Beginner to Professional",
+    "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+    },
+    "hasPart": [
+        {
+            "@type": "CreativeWork",
+            "name": "Linux Fundamentals",
+            "description": "Mastering the terminal and kernel basics."
+        },
+        {
+            "@type": "CreativeWork",
+            "name": "Infrastructure as Code",
+            "description": "Terraform and Ansible automation."
+        }
+    ]
+}
