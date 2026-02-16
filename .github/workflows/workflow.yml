@@ -1,0 +1,26 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+Jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkoutcode
+      - uses: actions/checkout@v5
+
+      - name: setup node
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+      - name: install packeages
+      - run: npm install
+
+      - name: run test
+      - run: npm test
+
+      
+     
+       
