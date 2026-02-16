@@ -4,23 +4,33 @@ on:
   push:
     branches: [ main ]
 
-Jobs:
-  build:
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: checkoutcode
-      - uses: actions/checkout@v5
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: setup node
-      - uses: actions/setup-node@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: install packeages
-      - run: npm install
+          cache: 'npm'
 
-      - name: run test
-      - run: npm test
+      - name: Install Dependencies
+        run: npm install
 
-      
-     
-       
+      - name: Lint Code
+        run: npm run lint
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
